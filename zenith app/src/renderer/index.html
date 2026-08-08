@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenith — Cognitive Wellness</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/interventions.css">
+</head>
+<body data-theme="dark">
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 1: Onboarding (First Launch Only)                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="screen screen-onboarding" id="screen-onboarding">
+    <div class="onboarding-container">
+      <div class="onboarding-glow"></div>
+      <div class="onboarding-orb">
+        <div class="logo-orb large"></div>
+      </div>
+      <h1 class="onboarding-title">Welcome to <span class="gradient-text">Zenith</span></h1>
+      <p class="onboarding-subtitle">Your cognitive wellness companion</p>
+
+      <div class="onboarding-features">
+        <div class="onboarding-feature">
+          <span class="feature-icon">🧠</span>
+          <span class="feature-text">Real-time cognitive load detection</span>
+        </div>
+        <div class="onboarding-feature">
+          <span class="feature-icon">🎯</span>
+          <span class="feature-text">Smart micro-interventions</span>
+        </div>
+        <div class="onboarding-feature">
+          <span class="feature-icon">🔒</span>
+          <span class="feature-text">100% private, local processing</span>
+        </div>
+      </div>
+
+      <div class="onboarding-input-group">
+        <label class="onboarding-label" for="input-name">What should we call you?</label>
+        <input type="text" class="onboarding-input" id="input-name" placeholder="Enter your name..." autocomplete="off" spellcheck="false" maxlength="30">
+      </div>
+
+      <button class="onboarding-btn" id="btn-get-started" disabled>
+        <span>Get Started</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 2: Greeting / Welcome Back                           -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="screen screen-greeting" id="screen-greeting" style="display:none">
+    <div class="greeting-container">
+      <div class="greeting-glow"></div>
+      <div class="greeting-time" id="greeting-time-label">Good Morning</div>
+      <h1 class="greeting-name" id="greeting-name">Hey, <span class="gradient-text" id="greeting-user">User</span> 👋</h1>
+      <p class="greeting-subtitle" id="greeting-subtitle">Ready to have a focused session?</p>
+
+      <div class="greeting-stats" id="greeting-stats">
+        <div class="greeting-stat">
+          <div class="greeting-stat-value" id="stat-sessions">0</div>
+          <div class="greeting-stat-label">Sessions</div>
+        </div>
+        <div class="greeting-stat-divider"></div>
+        <div class="greeting-stat">
+          <div class="greeting-stat-value" id="stat-minutes">0</div>
+          <div class="greeting-stat-label">Minutes</div>
+        </div>
+        <div class="greeting-stat-divider"></div>
+        <div class="greeting-stat">
+          <div class="greeting-stat-value" id="stat-interventions">0</div>
+          <div class="greeting-stat-label">Interventions</div>
+        </div>
+      </div>
+
+      <button class="greeting-start-btn" id="btn-start-session">
+        <div class="start-btn-orb"></div>
+        <span>Start Session</span>
+      </button>
+
+      <div class="greeting-tip" id="greeting-tip">
+        💡 Tip: Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd> to toggle Zenith anytime
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- SCREEN 3: Main App                                          -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div class="screen screen-app" id="screen-app" style="display:none">
+
+    <!-- Title Bar -->
+    <header class="titlebar" id="titlebar">
+      <div class="titlebar-drag">
+        <div class="titlebar-logo">
+          <div class="logo-orb" id="logo-orb"></div>
+          <span class="titlebar-text">Zenith</span>
+        </div>
+      </div>
+      <div class="titlebar-user" id="titlebar-user"></div>
+      <div class="titlebar-controls">
+        <button class="titlebar-btn" id="btn-mini-mode" title="Toggle Mini Widget">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+            <path d="M4 14h16M14 4v10"/>
+          </svg>
+        </button>
+        <button class="titlebar-btn" id="btn-theme" title="Toggle theme">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+        <button class="titlebar-btn" id="btn-minimize" title="Minimize">
+          <svg width="12" height="12" viewBox="0 0 12 12"><rect y="5" width="12" height="2" fill="currentColor" rx="1"/></svg>
+        </button>
+        <button class="titlebar-btn btn-close" id="btn-close" title="Close">
+          <svg width="12" height="12" viewBox="0 0 12 12">
+            <path d="M1 1L11 11M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="app-container" id="app-container">
+      <!-- Ambient Background Glows -->
+      <div class="ambient-glow glow-top" id="glow-top"></div>
+      <div class="ambient-glow glow-bottom" id="glow-bottom"></div>
+
+      <!-- Mini Widget UI -->
+      <div id="mini-widget" class="mini-widget-ui" style="display:none;">
+        <div class="mini-drag-handle"></div>
+        <div class="mini-widget-content">
+          <div class="mini-ring-wrapper">
+            <svg class="state-ring" viewBox="0 0 100 100" id="mini-ring-svg">
+              <circle class="ring-bg" cx="50" cy="50" r="42" />
+              <circle class="ring-progress" cx="50" cy="50" r="42" id="mini-ring-progress" stroke="url(#ring-gradient)" />
+            </svg>
+            <div class="mini-emoji" id="mini-emoji">🧘</div>
+          </div>
+          <div class="mini-info">
+            <div class="mini-label" id="mini-label">Calm</div>
+            <div class="mini-score" id="mini-score">15% Load</div>
+          </div>
+        </div>
+        <button id="btn-exit-mini" class="mini-btn-exit" title="Expand">⤢</button>
+      </div>
+
+      <!-- ─── Status View ──────────────────────────────────── -->
+      <section class="view active" id="view-status">
+        <div class="demo-indicator" id="demo-indicator">
+          <div class="demo-dot"></div>
+          DEMO MODE — Cycling through states
+        </div>
+
+        <!-- Cognitive State Ring -->
+        <div class="state-ring-container" id="state-ring-container">
+          <svg class="state-ring" viewBox="0 0 200 200" id="state-ring-svg">
+            <defs>
+              <linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" id="grad-stop-1" stop-color="#63e2b8"/>
+                <stop offset="100%" id="grad-stop-2" stop-color="#7b93fd"/>
+              </linearGradient>
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle class="ring-bg" cx="100" cy="100" r="85" />
+            <circle class="ring-progress" cx="100" cy="100" r="85" id="ring-progress"
+                    stroke="url(#ring-gradient)" filter="url(#glow)" />
+          </svg>
+          <div class="state-info" id="state-info">
+            <div class="state-emoji" id="state-emoji">🧘</div>
+            <div class="state-label" id="state-label">Calm</div>
+            <div class="state-score" id="state-score">0%</div>
+          </div>
+        </div>
+
+        <!-- Deep Work Protocol Card -->
+        <div class="deep-work-card" id="btn-focus-sprint">
+          <div class="dw-icon">🧠</div>
+          <div class="dw-content">
+            <div class="dw-title">Neural Deep-Work Protocol</div>
+            <div class="dw-subtitle">Initiate 25-min distraction-free sprint</div>
+          </div>
+          <div class="dw-action">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Live Metrics -->
+        <div class="metrics-strip expanded-metrics" id="metrics-strip">
+          <div class="metric-card" id="metric-speed">
+            <div class="metric-icon">⌨️</div>
+            <div class="metric-data"><span class="metric-value" id="val-speed">0.0</span><span class="metric-unit">keys/s</span></div>
+          </div>
+          <div class="metric-card" id="metric-errors">
+            <div class="metric-icon">🔴</div>
+            <div class="metric-data"><span class="metric-value" id="val-errors">0%</span><span class="metric-unit">errors</span></div>
+          </div>
+          <div class="metric-card" id="metric-flow">
+            <div class="metric-icon">🌊</div>
+            <div class="metric-data"><span class="metric-value" id="val-flow">0%</span><span class="metric-unit">flow prob.</span></div>
+          </div>
+          <div class="metric-card" id="metric-debt">
+            <div class="metric-icon">🔋</div>
+            <div class="metric-data"><span class="metric-value" id="val-debt">0</span><span class="metric-unit">min debt</span></div>
+          </div>
+        </div>
+
+        <!-- Trend Chart -->
+        <div class="trend-container" id="trend-container">
+          <div class="trend-header">
+            <span class="trend-title">Cognitive Load Trend</span>
+            <span class="trend-badge" id="trend-badge">Stable</span>
+          </div>
+          <canvas class="trend-canvas" id="trend-canvas" width="370" height="80"></canvas>
+        </div>
+
+        <!-- Active App -->
+        <div class="active-app-strip" id="active-app-strip">
+          <span class="active-app-icon">💻</span>
+          <span class="active-app-name" id="active-app-name">Detecting...</span>
+        </div>
+
+        <!-- Active Factors -->
+        <div class="factors-container" id="factors-container">
+          <div class="factors-header">Active Factors</div>
+          <div class="factors-list" id="factors-list">
+            <div class="factor-empty">No stress factors detected</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Insights View ────────────────────────────────── -->
+      <section class="view" id="view-insights">
+        <div class="view-header">
+          <button class="back-btn" id="btn-back-insights">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <h2 class="view-title">Insights</h2>
+        </div>
+        <div class="insights-content" id="insights-content">
+          <div class="insight-section">
+            <div class="insight-section-title">Today's Summary</div>
+            <div class="insights-summary" id="insights-summary"></div>
+          </div>
+          <div class="insight-section">
+            <div class="insight-section-title">Hourly Stress</div>
+            <canvas class="hourly-chart" id="hourly-chart" width="370" height="100"></canvas>
+          </div>
+          <div class="insight-section">
+            <div class="insight-section-title">Active Apps</div>
+            <div class="apps-list" id="apps-list"></div>
+          </div>
+          <div class="insight-section">
+            <div class="insight-section-title">AI Insights</div>
+            <div class="insights-cards" id="insights-cards"></div>
+          </div>
+          <div class="insight-section">
+            <div class="insight-section-title">7-Day Overview</div>
+            <canvas class="weekly-chart" id="weekly-chart" width="370" height="90"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Interventions View ───────────────────────────── -->
+      <section class="view" id="view-interventions">
+        <div class="view-header">
+          <button class="back-btn" id="btn-back-interventions">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <h2 class="view-title">Interventions</h2>
+        </div>
+        <div class="interventions-grid" id="interventions-grid"></div>
+      </section>
+
+      <!-- ─── Active Intervention View ─────────────────────── -->
+      <section class="view" id="view-active-intervention">
+        <div class="intervention-active" id="intervention-active-content"></div>
+      </section>
+
+      <!-- ─── Settings View ────────────────────────────────── -->
+      <section class="view" id="view-settings">
+        <div class="view-header">
+          <button class="back-btn" id="btn-back-settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <h2 class="view-title">Settings</h2>
+        </div>
+        <div class="settings-content" id="settings-content">
+          <div class="setting-group">
+            <div class="setting-label">Profile</div>
+            <div class="setting-item">
+              <span>Your name</span>
+              <input type="text" class="setting-input" id="setting-name" placeholder="Name" style="width:120px;text-align:right">
+            </div>
+          </div>
+          <div class="setting-group">
+            <div class="setting-label">Demo Mode</div>
+            <div class="setting-item">
+              <span>Enable demo simulation</span>
+              <label class="toggle">
+                <input type="checkbox" id="setting-demo">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+          <div class="setting-group">
+            <div class="setting-label">Monitoring</div>
+            <div class="setting-item">
+              <span>Enable keystroke monitoring</span>
+              <label class="toggle">
+                <input type="checkbox" id="setting-monitoring" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <span>Alert cooldown (seconds)</span>
+              <input type="number" class="setting-input" id="setting-cooldown" value="120" min="30" max="600">
+            </div>
+          </div>
+          <div class="setting-group">
+            <div class="setting-label">Sensitivity</div>
+            <div class="setting-item">
+              <span>Detection sensitivity</span>
+              <input type="range" class="setting-range" id="setting-sensitivity" min="1" max="10" value="5">
+            </div>
+          </div>
+          <div class="setting-group">
+            <div class="setting-label">Privacy</div>
+            <div class="setting-item privacy-note">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span>All processing is done locally. No keystrokes or text content are ever stored or transmitted. Only timing patterns are analyzed.</span>
+            </div>
+          </div>
+          <div class="setting-group">
+            <div class="setting-label">About</div>
+            <div class="setting-item about-info">
+              <div class="about-logo">
+                <div class="logo-orb large"></div>
+                <span>Zenith v1.0</span>
+              </div>
+              <p class="about-tagline">Your cognitive wellness companion</p>
+              <p class="about-shortcut">Toggle: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Z</kbd></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-btn active" data-view="view-status" id="nav-status" title="Status">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        <span>Status</span>
+      </button>
+      <button class="nav-btn" data-view="view-interventions" id="nav-interventions" title="Interventions">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span>Actions</span>
+      </button>
+      <button class="nav-btn" data-view="view-insights" id="nav-insights" title="Insights">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 20V10M12 20V4M6 20v-6"/>
+        </svg>
+        <span>Insights</span>
+      </button>
+      <button class="nav-btn" data-view="view-settings" id="nav-settings" title="Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Alert Banner -->
+  <div class="alert-banner" id="alert-banner">
+    <div class="alert-content">
+      <div class="alert-icon" id="alert-icon">⚡</div>
+      <div class="alert-text">
+        <div class="alert-title" id="alert-title">Elevated cognitive load</div>
+        <div class="alert-subtitle" id="alert-subtitle">Consider a short break</div>
+      </div>
+    </div>
+    <div class="alert-actions">
+      <button class="alert-btn primary" id="alert-action-btn">Take action</button>
+      <button class="alert-btn" id="alert-dismiss-btn">Dismiss</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

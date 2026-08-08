@@ -1,0 +1,364 @@
+/* Zenith — Intervention-Specific Styles */
+
+/* ── Active Intervention Container ─────────────────────────── */
+.intervention-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  padding: var(--space-2xl);
+  text-align: center;
+  animation: scale-in var(--duration-normal) var(--ease-out);
+}
+
+/* ── Breathing Exercise ────────────────────────────────────── */
+.breathing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.breathing-visual {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+.breathing-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.breathing-circle.inner {
+  background: var(--gradient-calm);
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 0 40px rgba(99, 226, 184, 0.3);
+}
+
+.breathing-circle.outer {
+  background: transparent;
+  border: 2px solid var(--accent-primary);
+  opacity: 0.3;
+  width: 160px;
+  height: 160px;
+}
+
+.breathing-instruction {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.breathing-phase {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── Break Timer ───────────────────────────────────────────── */
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.timer-display {
+  font-family: var(--font-mono);
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -2px;
+}
+
+.timer-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.timer-progress {
+  width: 200px;
+  height: 4px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.timer-progress-bar {
+  height: 100%;
+  background: var(--gradient-calm);
+  border-radius: var(--radius-full);
+  transition: width 1s linear;
+}
+
+/* ── Ambient Sound ─────────────────────────────────────────── */
+.ambient-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.sound-visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  height: 60px;
+  padding: var(--space-md);
+}
+
+.sound-bar {
+  width: 4px;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+  opacity: 0.7;
+  min-height: 4px;
+}
+
+.ambient-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ambient-controls {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.ambient-btn {
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--border-default);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.ambient-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.ambient-btn.active {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  border-color: var(--accent-primary);
+}
+
+/* ── Task Chunking ─────────────────────────────────────────── */
+.chunk-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.chunk-header {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.chunk-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.chunk-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  text-align: left;
+}
+
+.chunk-number {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.chunk-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 13px;
+  outline: none;
+}
+
+.chunk-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ── Stretch Guide ─────────────────────────────────────────── */
+.stretch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.stretch-icon {
+  font-size: 48px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.stretch-instruction {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.stretch-detail {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Reflect Prompt ────────────────────────────────────────── */
+.reflect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.reflect-prompt {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-style: italic;
+  max-width: 280px;
+}
+
+/* ── Posture Check ─────────────────────────────────────────── */
+.posture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.posture-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+  text-align: left;
+}
+
+.posture-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.posture-check {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-default);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.posture-check.checked {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: white;
+}
+
+/* ── Shared Intervention Controls ──────────────────────────── */
+.intervention-controls {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+.intervention-btn {
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-default);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.intervention-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.intervention-btn.primary {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  border-color: transparent;
+}
+
+.intervention-btn.primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* ── Screen Dim Overlay ────────────────────────────────────── */
+.screen-dim-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: fade-in var(--duration-slow) var(--ease-out);
+}
+
+.screen-dim-content {
+  text-align: center;
+  color: white;
+}
+
+.screen-dim-content .timer-display {
+  color: white;
+}
