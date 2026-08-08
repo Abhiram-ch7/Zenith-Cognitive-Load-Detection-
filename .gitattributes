@@ -1,0 +1,16 @@
+# Normalize text line endings in the repository
+* text=auto
+
+# Binary assets — never convert
+*.h5    binary
+*.npy   binary
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.ico   binary
+*.wav   binary
+*.mp3   binary
+*.zip   binary
+
+# Data files keep LF
+*.csv   text eol=lf

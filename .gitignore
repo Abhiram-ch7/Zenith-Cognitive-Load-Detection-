@@ -1,0 +1,37 @@
+# ---- Python ----
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# ---- Node / Electron ----
+node_modules/
+zenith-app/node_modules/
+zenith-app/dist/
+zenith-app/build/
+zenith-app/dist.zip
+npm-debug.log*
+
+# ---- Raw keystroke logs (privacy) ----
+# These record the literal characters typed during data-collection sessions.
+# Redacted equivalents that reproduce the exact same features live in data/.
+# Patterns are anchored with a leading slash so they match only the project
+# root and never the redacted copies under data/. See DATA_NOTICE.md.
+/high.csv
+/low.csv
+/low1.csv
+/raw_data.csv
+/interaction_data.csv
+/high_cleaned.csv
+/low_cleaned.csv
+
+# ---- Editors / OS ----
+.claude/
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+*.swp

@@ -1,0 +1,10 @@
+# Data pipeline and RandomForest
+pandas
+numpy
+scikit-learn
+
+# Keystroke capture (logger.py, predict.py, DL_predictasd.py)
+pynput
+
+# LSTM training and inference
+tensorflow
